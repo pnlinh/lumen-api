@@ -14,3 +14,15 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/hello/world', function () {
+    return 'Hello Lumen';
+});
+
+$router->get('/hello/{name}', function ($name) {
+    return "Hello {$name}";
+});
+
+$router->get('user[/{name}]', function ($name = null) {
+    return $name;
+});
