@@ -62,7 +62,7 @@ $app->singleton(
 // ]);
 
 $app->middleware([
-    App\Http\Middleware\RequestLogMiddleware::class,
+    //App\Http\Middleware\RequestLogMiddleware::class,
     App\Http\Middleware\AuthorMiddleware::class,
 ]);
 
