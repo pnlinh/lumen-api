@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
+
 class BooksController extends Controller
 {
     /**
@@ -10,11 +12,8 @@ class BooksController extends Controller
      * @return array
      * @author pnlinh <pnlinh1207@gmail.com>
      */
-    public function index(): array
+    public function index()
     {
-        return [
-            ['title' => 'foo'],
-            ['title' => 'bar'],
-        ];
+        return Book::all();
     }
 }
