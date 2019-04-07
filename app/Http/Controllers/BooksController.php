@@ -51,7 +51,33 @@ class BooksController extends Controller
         $book = Book::create($request->all());
 
         return response()->json(['created' => true], 201, [
-            'Location' => route('books.show', ['id' => $book->id])
+            'Location' => route('books.show', ['id' => $book->id]),
         ]);
+    }
+
+    /**
+     * PUT /books/{id}
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param $id
+     * @return \App\Book
+     * @author pnlinh <pnlinh1207@gmail.com>
+     */
+    public function update(Request $request, $id)
+    {
+        try {
+            $book = Book::findOrFail($id);
+        } catch (ModelNotFoundException $exception) {
+            return response()->json([
+                'error' => [
+                    'message' => 'Book not found',
+                ]
+            ], 404);
+        }
+
+        $book->fill($request->all());
+        $book->save();
+
+        return $book;
     }
 }
