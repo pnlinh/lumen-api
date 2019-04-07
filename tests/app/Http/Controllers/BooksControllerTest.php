@@ -146,4 +146,21 @@ class BooksControllerTest extends TestCase
     {
         $this->put('/books/this-is-invalid')->seeStatusCode(404);
     }
+
+    /** @test */
+    public function destroy_should_remove_a_valid_book()
+    {
+        $this
+            ->delete('/books/1')
+            ->seeStatusCode(204)
+            ->isEmpty();
+
+        $this->notSeeInDatabase('books', ['id' => 1]);
+    }
+
+    /** @test */
+    public function destroy_should_not_match_an_invalid_route()
+    {
+        $this->delete('/books/999999999')->seeStatusCode(404);
+    }
 }
