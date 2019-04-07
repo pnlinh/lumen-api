@@ -63,6 +63,7 @@ $app->singleton(
 
 $app->middleware([
     App\Http\Middleware\RequestLogMiddleware::class,
+    App\Http\Middleware\AuthorMiddleware::class,
 ]);
 
 $app->routeMiddleware([
@@ -98,7 +99,7 @@ $app->routeMiddleware([
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
-], function ($router) {
+], static function ($router) {
     require __DIR__.'/../routes/web.php';
 });
 

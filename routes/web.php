@@ -11,18 +11,21 @@
 |
 */
 
-$router->get('/', function () use ($router) {
+$router->get('/', static function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/hello/world', function () {
+$router->get('/hello/world', static function () {
     return 'Hello Lumen';
 });
 
-$router->get('/hello/{name}', ['middleware' => 'hello', function ($name) {
+$router->get('/hello/{name}', ['middleware' => 'hello', static function ($name) {
     return "Hello {$name}";
 }]);
 
-$router->get('user[/{name}]', function ($name = null) {
+$router->get('user[/{name}]', static function ($name = null) {
     return $name;
 });
+
+# Book API App
+$router->get('/books', 'BooksController@index');
