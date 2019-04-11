@@ -11,19 +11,19 @@
 |
 */
 
-$router->get('/', static function () use ($router) {
+$router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/hello/world', static function () {
+$router->get('/hello/world', function () {
     return 'Hello Lumen';
 });
 
-$router->get('/hello/{name}', ['middleware' => 'hello', static function ($name) {
+$router->get('/hello/{name}', ['middleware' => 'hello', function ($name) {
     return "Hello {$name}";
 }]);
 
-$router->get('user[/{name}]', static function ($name = null) {
+$router->get('user[/{name}]', function ($name = null) {
     return $name;
 });
 

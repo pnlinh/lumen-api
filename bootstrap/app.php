@@ -99,7 +99,7 @@ $app->routeMiddleware([
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
-], static function ($router) {
+], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
 
